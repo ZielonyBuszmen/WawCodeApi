@@ -16,4 +16,9 @@ class DefaultControllerTest extends WebTestCase
         $this->assertContains('Welcome to Symfony', $crawler->filter('#container h1')->text());
     }
 
+    public function testMiau()
+    {
+        $this->assertTrue(true);
+    }
+
 }
