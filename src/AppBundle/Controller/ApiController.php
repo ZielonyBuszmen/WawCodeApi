@@ -4,10 +4,13 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\HistoricalEvent;
 use AppBundle\Entity\Repository\HistoricalEventRepository;
+use AppBundle\Form\HistoricalEventData;
+use AppBundle\Form\HistoricalEventFormType;
 use FOS\RestBundle\Controller\FOSRestController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class ApiController extends FOSRestController
+class ApiController extends BaseController
 {
 
     public function getByMonthAction($month)
@@ -23,6 +26,25 @@ class ApiController extends FOSRestController
         $repo = $this->getDoctrine()->getRepository(HistoricalEvent::class);
         $result = $repo->findByDate($day, $month);
         $view = $this->view($result);
+        return $this->handleView($view);
+    }
+
+    public function createAction(Request $request)
+    {
+        /** @var HistoricalEventData $data */
+        $data = $this->handleRequest($request, HistoricalEventFormType::class);
+        $event = new HistoricalEvent();
+
+        $event->setName($data->name);
+        $event->setContent($data->content);
+        $event->setDay($data->day);
+        $event->setMonth($data->month);
+        $event->setYear($data->year);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($event);
+        $em->flush();
+
+        $view = $this->view($event, 200);
         return $this->handleView($view);
     }
 

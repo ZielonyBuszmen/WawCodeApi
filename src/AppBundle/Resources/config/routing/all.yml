@@ -17,3 +17,8 @@ day_month:
     path: /month-day/{month}/{day}
     defaults: { _controller: AppBundle:Api:getByMonthDay}
     methods: [GET, OPTIONS]
+
+event_create:
+    path: /event
+    defaults: {_controller: AppBundle:Api:create}
+    methods: [POST, OPTIONS]
