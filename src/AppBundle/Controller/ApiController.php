@@ -4,10 +4,28 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\HistoricalEvent;
 use AppBundle\Entity\Repository\HistoricalEventRepository;
+use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\HttpFoundation\Response;
 
-class ApiController extends BaseController
+class ApiController extends FOSRestController
 {
+
+    public function getByMonthAction($month)
+    {
+        $repo = $this->getDoctrine()->getRepository(HistoricalEvent::class);
+        $result = $repo->findByMonth($month);
+        $view = $this->view($result, 200);
+        return $this->handleView($view);
+    }
+
+    public function getByMonthDayAction($month, $day)
+    {
+        $repo = $this->getDoctrine()->getRepository(HistoricalEvent::class);
+        $result = $repo->findByDate($day, $month);
+        $view = $this->view($result);
+        return $this->handleView($view);
+    }
+
 
     public function testAction()
     {
@@ -29,10 +47,10 @@ class ApiController extends BaseController
     public function repositoryAction()
     {
         $result = $this->getDoctrine()->getRepository(HistoricalEvent::class)
-            ->findByDate(1,8);
+            ->findByDate(1, 8);
+        $view = $this->view($result, 200);
 
-
-        return new Response('wyciaganie danych');
+        return $this->handleView($view);
 
     }
 }

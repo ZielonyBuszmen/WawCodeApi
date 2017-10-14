@@ -7,3 +7,13 @@ repository:
   path: /repository
   defaults: { _controller: AppBundle:Api:repository}
   methods: [GET, OPTIONS]
+
+month:
+    path: /month/{month}
+    defaults: { _controller: AppBundle:Api:getByMonth}
+    methods: [GET, OPTIONS]
+
+day_month:
+    path: /month-day/{month}/{day}
+    defaults: { _controller: AppBundle:Api:getByMonthDay}
+    methods: [GET, OPTIONS]
