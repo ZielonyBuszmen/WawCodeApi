@@ -7,11 +7,11 @@ git clone https://github.com/ZielonyBuszmen/WawCodeApi.git
 
 composer install
 
-php bin/console server:run
-
 php bin/console doctrine:database:create
 
  php bin/console doctrine:schema:update --force
+ 
+ php bin/console server:run
 
  
  

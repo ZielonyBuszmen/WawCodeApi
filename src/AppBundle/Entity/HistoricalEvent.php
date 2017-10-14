@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Table(name="historical_events")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\Repository\HistoricalEventRepository")
  */
 class HistoricalEvent
 {
@@ -20,10 +20,19 @@ class HistoricalEvent
     private $id;
 
     /**
-     * @ORM\Column(type="date")
-     * @var \DateTime $date
+     * @ORM\Column(type="integer")
      */
-    private $date;
+    private $day;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $month;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $year;
 
     /**
      * @ORM\Column(type="string")
@@ -35,42 +44,53 @@ class HistoricalEvent
      */
     private $content;
 
-    /**
-     * @param int $id
-     */
-    public function __construct($id)
-    {
-        $this->id = $id;
-    }
-    
     public function getId()
     {
         return $this->id;
     }
 
-    public function getDate()
+    public function getDateObject()
     {
-        return $this->date;
+        $date = new \DateTime();
+        $date->setDate($this->year, $this->month, $this->day);
+        return $date;
     }
 
-    public function setDate(\DateTime $date)
+    public function setDateObject(\DateTime $date)
     {
-        $this->date = $date;
+        $this->day = $date->format('Y');
+        $this->month = $date->format('m');
+        $this->year = $date->format('d');
     }
 
     public function getDay()
     {
-        return $this->date->format('j');
+        return $this->day;
+    }
+
+    public function setDay($day)
+    {
+        $this->day = $day;
     }
 
     public function getMonth()
     {
-        return $this->date->format('n');
+        return $this->month;
+    }
+
+    public function setMonth($month)
+    {
+        $this->month = $month;
     }
 
     public function getYear()
     {
-        return $this->date->format('Y');
+        return $this->year;
+    }
+
+    public function setYear($year)
+    {
+        $this->year = $year;
     }
 
     public function getName()
