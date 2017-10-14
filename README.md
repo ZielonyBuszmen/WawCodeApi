@@ -2,9 +2,14 @@
 
 ## Instalacja
 ```
+
 git clone https://github.com/ZielonyBuszmen/WawCodeApi.git
 
 composer install
 
-
+php bin/console server:run
+ 
+ 
 ```
+
+Strona defaultowo dostępna jest pod **http://127.0.0.1:8000**
