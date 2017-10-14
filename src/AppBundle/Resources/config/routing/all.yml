@@ -1,0 +1,4 @@
+test:
+  path: /test
+  defaults: { _controller: AppBundle:Api:test}
+  methods: [GET, OPTIONS]
