@@ -3,7 +3,9 @@
 
 
 ### Screeny z aplikacji i opis (ze slajdów)
-
+![foto](readme_photos/screenshot1.png)
+![foto](readme_photos/screenshot2.png)
+![foto](readme_photos/screenshot3.png)
 
 ## Instalacja
 
