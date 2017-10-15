@@ -44,7 +44,7 @@ class HistoricalEventService
         $historicalEvent->setYear($data->year);
         $historicalEvent->setName($data->name);
         $historicalEvent->setContent($data->content);
-        $historicalEvent->setImage($data->image);
+        $historicalEvent->setImageUrl($data->imageUrl);
 
         $chat = new Chat($historicalEvent);
         $this->em->persist($chat);
