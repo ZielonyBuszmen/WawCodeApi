@@ -2,10 +2,11 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Table(name="historical_events")
+ * @ORM\Table(name="chat")
  * @ORM\Entity(repositoryClass="AppBundle\Entity\Repository\ChatRepository")
  */
 class Chat
@@ -18,53 +19,25 @@ class Chat
     private $id;
 
     /**
-     * @ORM\Column(type="string")
+     * One Chat has Many Comments.
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="chat")
+     * @var ArrayCollection $comments
      */
-    private $username;
+    private $comments;
 
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $message;
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+    }
 
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $date;
-
-    public function getID()
+    public function getId()
     {
         return $this->id;
     }
 
-    public function getUsername()
+    public function addComment(Comment $comment)
     {
-        return $this->username;
-    }
-
-    public function setUsername($username)
-    {
-        $this->username = $username;
-    }
-
-    public function getMessage()
-    {
-        return $this->message;
-    }
-
-    public function setMessage($message)
-    {
-        $this->message = $message;
-    }
-
-    public function getDate()
-    {
-        return $this->date;
-    }
-
-    public function setDate(\DateTime $date)
-    {
-        $this->date = $date;
+        $this->comments->add($comment);
     }
 
 }

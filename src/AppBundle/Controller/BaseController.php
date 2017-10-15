@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 
+use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,5 +21,10 @@ class BaseController extends FOSRestController
         }
 
         return $data = $form->getData();
+    }
+
+    protected function getEntityManager(): EntityManagerInterface
+    {
+        return $this->getDoctrine()->getManager();
     }
 }
