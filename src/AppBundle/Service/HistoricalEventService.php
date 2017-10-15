@@ -2,6 +2,7 @@
 
 namespace AppBundle\Service;
 
+use AppBundle\Entity\Chat;
 use AppBundle\Entity\HistoricalEvent;
 use AppBundle\Entity\Repository\HistoricalEventRepository;
 use AppBundle\Form\HistoricalEventData;
@@ -37,15 +38,18 @@ class HistoricalEventService
             return false;
         }
 
-        $entity = new HistoricalEvent();
-        $entity->setDay($data->day);
-        $entity->setMonth($data->month);
-        $entity->setYear($data->year);
-        $entity->setName($data->name);
-        $entity->setContent($data->content);
-        $entity->setImageUrl($data->imageUrl);
+        $historicalEvent = new HistoricalEvent();
+        $historicalEvent->setDay($data->day);
+        $historicalEvent->setMonth($data->month);
+        $historicalEvent->setYear($data->year);
+        $historicalEvent->setName($data->name);
+        $historicalEvent->setContent($data->content);
+        $historicalEvent->setImage($data->image);
 
-        $this->em->persist($entity);
+        $chat = new Chat($historicalEvent);
+        $this->em->persist($chat);
+
+        $this->em->persist($historicalEvent);
         return true;
     }
 }

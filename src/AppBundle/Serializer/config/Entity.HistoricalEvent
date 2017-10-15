@@ -1,0 +1,19 @@
+# Name of the file follows: Katalog.FileName.yml
+#
+# Some fields require context serialization see AppBundle/Serializer/EventSubscriber/*ContextSubscriber
+AppBundle\Entity\HistoricalEvent:
+  exclusion_policy: ALL
+  properties:
+    id:
+      expose: true
+      type: string
+      groups:
+      - historical_event
+    name:
+      expose: true
+      groups:
+      - historical_event
+    chat:
+      expose: true
+      groups:
+      - historical_event

@@ -37,3 +37,8 @@ create:
     path: /create
     defaults: {_controller: AppBundle:Api:create}
     methods: [POST, OPTIONS]
+
+comment_create:
+    path: /chat/{chatId}/comment
+    defaults: {_controller: AppBundle:Comment:create}
+    methods: [POST, OPTIONS]

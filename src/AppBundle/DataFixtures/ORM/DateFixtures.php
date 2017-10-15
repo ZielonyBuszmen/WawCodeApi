@@ -1,6 +1,8 @@
 <?php
 namespace AppBundle\DataFixtures\ORM;
 
+use AppBundle\Entity\Chat;
+use AppBundle\Entity\Comment;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use AppBundle\Entity\HistoricalEvent;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -45,6 +47,20 @@ class DateFixtures extends Fixture
             $event->setContent($names[$i]." ".$content);
             $manager->persist($event);
         }
+
+        $chat = new Chat($event);
+        $manager->persist($chat);
+
+        $comment1 = new Comment('Komar komentuje', 'Komar', $chat);
+        $manager->persist($comment1);
+        $comment2 = new Comment('Maciek komentuje', 'Maćku', $chat);
+        $manager->persist($comment2);
+        $comment3 = new Comment('Ilya komentuje', 'Ilya', $chat);
+        $manager->persist($comment3);
+        $comment4 = new Comment('Piotrku komentuje', 'Piotrku', $chat);
+        $manager->persist($comment4);
+        $comment5 = new Comment('Pandu komentuje', 'Pandu', $chat);
+        $manager->persist($comment5);
 
         $manager->flush();
     }

@@ -48,6 +48,12 @@ class HistoricalEvent
      */
     private $imageUrl;
 
+    /**
+     * One Event has One Chat.
+     * @ORM\OneToOne(targetEntity="Chat", mappedBy="event")
+     */
+    private $chat;
+
     public function getId()
     {
         return $this->id;
