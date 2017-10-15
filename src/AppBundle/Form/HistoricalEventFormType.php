@@ -23,6 +23,7 @@ class HistoricalEventFormType extends BaseFormType
             ])
             ->add('year', TextType::class, [
             ])
+            ->add('imageUrl', TextType::class)
         ;
 
 
