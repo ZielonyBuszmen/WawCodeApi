@@ -4,6 +4,7 @@ namespace AppBundle\Service;
 
 use AppBundle\Entity\Chat;
 use AppBundle\Entity\HistoricalEvent;
+use AppBundle\Entity\Repository\ChatRepository;
 use AppBundle\Entity\Repository\HistoricalEventRepository;
 use AppBundle\Form\HistoricalEventData;
 use Doctrine\ORM\EntityManager;
@@ -20,6 +21,10 @@ class HistoricalEventService
      * @var HistoricalEventRepository
      */
     private $repository;
+    /**
+     * @var ChatRepository
+     */
+    private $chatRepository;
 
     /**
      * @param EntityManager $em
@@ -28,6 +33,7 @@ class HistoricalEventService
     {
         $this->em = $em;
         $this->repository = $this->em->getRepository(HistoricalEvent::class);
+        $this->chatRepository = $this->em->getRepository(Chat::class);
 
     }
 
@@ -46,8 +52,9 @@ class HistoricalEventService
         $historicalEvent->setContent($data->content);
         $historicalEvent->setImageUrl($data->imageUrl);
 
-        $chat = new Chat($historicalEvent);
-        $this->em->persist($chat);
+        $chat = $this->chatRepository->findOneBy([]);
+
+        $historicalEvent->setChat($chat);
 
         $this->em->persist($historicalEvent);
         return true;

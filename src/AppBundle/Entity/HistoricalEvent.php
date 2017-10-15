@@ -49,8 +49,9 @@ class HistoricalEvent
     private $imageUrl;
 
     /**
-     * One Event has One Chat.
-     * @ORM\OneToOne(targetEntity="Chat", mappedBy="event")
+     * @ORM\ManyToOne(targetEntity="Chat")
+     * @ORM\JoinColumn(name="chat_id", referencedColumnName="id")
+     * @var Chat
      */
     private $chat;
 
@@ -131,6 +132,22 @@ class HistoricalEvent
     public function setImageUrl($image_url)
     {
         $this->imageUrl = $image_url;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getChat()
+    {
+        return $this->chat;
+    }
+
+    /**
+     * @param mixed $chat
+     */
+    public function setChat($chat): void
+    {
+        $this->chat = $chat;
     }
 
 
