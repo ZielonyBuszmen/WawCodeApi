@@ -10,6 +10,17 @@ use Symfony\Component\HttpFoundation\Response;
 class ApiController extends FOSRestController
 {
 
+public function getTodayAction()
+    {
+        $date = new \Datetime("now");
+        $day = $date->format('m');
+        $month = $date->format('d');
+        $repo = $this->getDoctrine()->getRepository(HistoricalEvent::class);
+        $result = $result = $repo->findByDate($day, $month);
+        $view = $this->view($result, 200);
+        return $this->handleView($view);
+    }
+
     public function getByMonthAction($month)
     {
         $repo = $this->getDoctrine()->getRepository(HistoricalEvent::class);
