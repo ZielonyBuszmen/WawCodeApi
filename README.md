@@ -1,6 +1,21 @@
-# WawCode Hackaton 2017 - API Bułka software
+# Hackaton WawCode 2017 - Kalendarz Historyczny Warszawy
+## Team Bułka Software
+
+
+### Screeny z aplikacji i opis (ze slajdów)
+
 
 ## Instalacja
+
+Aby zainstalowac, to trzeba pobrać kod z trzech repozytoriów
+
+- Tutaj linki do repozytoriów
+
+1) Instrukcja do odpalenia backendu (api)
+2) instrukcja do odpalenia frontendu
+3) Instrukcja do odpalenia crawlera
+
+
 ```
 
 git clone https://github.com/ZielonyBuszmen/WawCodeApi.git
