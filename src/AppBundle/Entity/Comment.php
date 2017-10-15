@@ -7,9 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Table(name="comment")
  * @ORM\Entity(repositoryClass="AppBundle\Entity\Repository\CommentRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Comment
 {
+    use Timestampable;
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
