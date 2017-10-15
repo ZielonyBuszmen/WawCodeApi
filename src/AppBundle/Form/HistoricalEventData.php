@@ -6,8 +6,9 @@ namespace AppBundle\Form;
 class HistoricalEventData
 {
     public $name;
-    public $content;
+    public $content = "";
     public $day;
     public $month;
     public $year;
+    public $image = "";
 }

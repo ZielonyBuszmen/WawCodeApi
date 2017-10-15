@@ -4,6 +4,7 @@
 namespace AppBundle\Entity\Repository;
 
 
+use AppBundle\Form\HistoricalEventData;
 use Doctrine\ORM\EntityRepository;
 
 class HistoricalEventRepository extends EntityRepository
@@ -44,6 +45,16 @@ class HistoricalEventRepository extends EntityRepository
         return $this->findOneBy([
             'day' => $day,
             'month' => $month,
+        ]);
+    }
+
+    public function findSameAs(HistoricalEventData $data)
+    {
+        return $this->findOneBy([
+            'day' => $data->day,
+            'month' => $data->month,
+            'year' => $data->year,
+            'name' => $data->name,
         ]);
     }
 
