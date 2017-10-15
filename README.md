@@ -29,6 +29,7 @@ Strona defaultowo dostępna jest pod **http://127.0.0.1:8000**
 /month-day/{month}/{day}
 /today
 /random
+/create     -> POST
 
 ```
 

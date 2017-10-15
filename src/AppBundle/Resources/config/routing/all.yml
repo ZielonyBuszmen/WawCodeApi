@@ -27,3 +27,13 @@ random:
     path: /random
     defaults: { _controller: AppBundle:Api:getTodayRandom}
     methods: [GET, OPTIONS]
+
+event_create:
+    path: /event
+    defaults: {_controller: AppBundle:Api:create}
+    methods: [POST, OPTIONS]
+
+create:
+    path: /create
+    defaults: {_controller: AppBundle:Api:create}
+    methods: [POST, OPTIONS]

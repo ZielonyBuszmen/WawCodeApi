@@ -4,11 +4,28 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\HistoricalEvent;
 use AppBundle\Entity\Repository\HistoricalEventRepository;
+use AppBundle\Form\HistoricalEventData;
+use AppBundle\Form\HistoricalEventFormType;
+use AppBundle\Service\HistoricalEventService;
 use FOS\RestBundle\Controller\FOSRestController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class ApiController extends FOSRestController
+class ApiController extends BaseController
 {
+
+    /**
+     * @var HistoricalEventService
+     */
+    private $historical_event_svc;
+
+    /**
+     * @param HistoricalEventService $historical_event_svc
+     */
+    public function __construct(HistoricalEventService $historical_event_svc)
+    {
+        $this->historical_event_svc = $historical_event_svc;
+    }
 
     public function getTodayAction()
     {
@@ -48,6 +65,16 @@ class ApiController extends FOSRestController
         return $this->handleView($view);
     }
 
+    public function createAction(Request $request)
+    {
+        /** @var HistoricalEventData $data */
+        $data = $this->handleRequest($request, HistoricalEventFormType::class);
+        $successed = $this->historical_event_svc->createHistoricalEvent($data);
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
+        $view = $this->view($successed, 200);
+        return $this->handleView($view);
+    }
 
     public function testAction()
     {
