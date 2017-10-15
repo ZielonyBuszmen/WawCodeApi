@@ -10,13 +10,24 @@ use Symfony\Component\HttpFoundation\Response;
 class ApiController extends FOSRestController
 {
 
-public function getTodayAction()
+    public function getTodayAction()
     {
         $date = new \Datetime("now");
         $month = $date->format('m');
         $day = $date->format('d');
         $repo = $this->getDoctrine()->getRepository(HistoricalEvent::class);
         $result = $result = $repo->findByDate($day, $month);
+        $view = $this->view($result, 200);
+        return $this->handleView($view);
+    }
+
+    public function getTodayRandomAction()
+    {
+        $date = new \Datetime("now");
+        $month = $date->format('m');
+        $day = $date->format('d');
+        $repo = $this->getDoctrine()->getRepository(HistoricalEvent::class);
+        $result = $result = $repo->findByDateRandom($day, $month);
         $view = $this->view($result, 200);
         return $this->handleView($view);
     }
@@ -55,13 +66,4 @@ public function getTodayAction()
         return new Response('adadasda');
     }
 
-    public function repositoryAction()
-    {
-        $result = $this->getDoctrine()->getRepository(HistoricalEvent::class)
-            ->findByDate(1, 8);
-        $view = $this->view($result, 200);
-
-        return $this->handleView($view);
-
-    }
 }

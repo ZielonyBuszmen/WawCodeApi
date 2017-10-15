@@ -4,7 +4,6 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
  * @ORM\Table(name="historical_events")
  * @ORM\Entity(repositoryClass="AppBundle\Entity\Repository\HistoricalEventRepository")
@@ -43,6 +42,11 @@ class HistoricalEvent
      * @ORM\Column(type="string", nullable=true)
      */
     private $content;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $image;
 
     public function getId()
     {
@@ -113,5 +117,14 @@ class HistoricalEvent
         $this->content = $content;
     }
 
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function setImage($image_url)
+    {
+        $this->image = $image_url;
+    }
 
 }

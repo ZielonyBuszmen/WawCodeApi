@@ -1,4 +1,4 @@
-#WawCode Hackaton 2017 - API Bułka software
+# WawCode Hackaton 2017 - API Bułka software
 
 ## Instalacja
 ```
@@ -16,7 +16,19 @@ php bin/console doctrine:fixtures:load -q
 php bin/console server:run
 
  
- 
+
+```
+Strona defaultowo dostępna jest pod **http://127.0.0.1:8000**
+
+
+## Routy
+
 ```
 
-Strona defaultowo dostępna jest pod **http://127.0.0.1:8000**
+/month/{month}
+/month-day/{month}/{day}
+/today
+/random
+
+```
+

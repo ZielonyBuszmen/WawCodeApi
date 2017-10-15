@@ -3,11 +3,6 @@ test:
   defaults: { _controller: AppBundle:Api:test}
   methods: [GET, OPTIONS]
 
-repository:
-  path: /repository
-  defaults: { _controller: AppBundle:Api:repository}
-  methods: [GET, OPTIONS]
-
 month:
     path: /month/{month}
     defaults: { _controller: AppBundle:Api:getByMonth}
@@ -21,4 +16,14 @@ day_month:
 today:
     path: /today
     defaults: { _controller: AppBundle:Api:getToday}
+    methods: [GET, OPTIONS]
+
+main:
+    path: /
+    defaults: { _controller: AppBundle:Api:getToday}
+    methods: [GET, OPTIONS]
+
+random:
+    path: /random
+    defaults: { _controller: AppBundle:Api:getTodayRandom}
     methods: [GET, OPTIONS]
