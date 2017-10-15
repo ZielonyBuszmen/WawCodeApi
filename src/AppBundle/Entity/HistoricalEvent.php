@@ -46,7 +46,7 @@ class HistoricalEvent
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    private $image;
+    private $imageUrl;
 
     public function getId()
     {
@@ -117,14 +117,14 @@ class HistoricalEvent
         $this->content = $content;
     }
 
-    public function getImage()
+    public function getImageUrl()
     {
-        return $this->image;
+        return $this->imageUrl;
     }
 
-    public function setImage($image_url)
+    public function setImageUrl($image_url)
     {
-        $this->image = $image_url;
+        $this->imageUrl = $image_url;
     }
 
 }

@@ -10,5 +10,5 @@ class HistoricalEventData
     public $day;
     public $month;
     public $year;
-    public $image = "";
+    public $imageUrl = "";
 }

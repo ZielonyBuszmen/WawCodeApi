@@ -43,7 +43,7 @@ class HistoricalEventService
         $entity->setYear($data->year);
         $entity->setName($data->name);
         $entity->setContent($data->content);
-        $entity->setImage($data->image);
+        $entity->setImageUrl($data->imageUrl);
 
         $this->em->persist($entity);
         return true;
