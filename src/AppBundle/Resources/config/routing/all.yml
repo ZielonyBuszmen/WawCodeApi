@@ -43,6 +43,11 @@ comment_create:
     defaults: {_controller: AppBundle:Comment:create}
     methods: [POST, OPTIONS]
 
+comment_post:
+    path: /comment
+    defaults: {_controller: AppBundle:Comment:createWithoutChat}
+    methods: [POST, OPTIONS]
+
 chat_list:
     path: /chat
     defaults: { _controller: AppBundle:Chat:list}
