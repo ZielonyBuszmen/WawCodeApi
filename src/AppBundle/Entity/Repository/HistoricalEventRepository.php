@@ -39,5 +39,13 @@ class HistoricalEventRepository extends EntityRepository
         ]);
     }
 
+    public function findByDateRandom($day, $month)
+    {
+        return $this->findOneBy([
+            'day' => $day,
+            'month' => $month,
+        ]);
+    }
+
 
 }
