@@ -3,8 +3,32 @@
 
 
 ### Screeny z aplikacji i opis (ze slajdów)
+
+![foto](readme_photos/Slajd1.png)
+
+![foto](readme_photos/Slajd2.png)
+
+![foto](readme_photos/Slajd3.png)
+
+![foto](readme_photos/Slajd4.png)
+
+![foto](readme_photos/Slajd5.png)
+
+![foto](readme_photos/Slajd6.png)
+
+![foto](readme_photos/Slajd7.png)
+
+![foto](readme_photos/Slajd8.png)
+
+![foto](readme_photos/Slajd9.png)
+
+![foto](readme_photos/Slajd10.png)
+
+
 ![foto](readme_photos/screenshot1.png)
+
 ![foto](readme_photos/screenshot2.png)
+
 ![foto](readme_photos/screenshot3.png)
 
 ## Instalacja
