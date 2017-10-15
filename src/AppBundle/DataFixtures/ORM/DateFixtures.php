@@ -48,7 +48,7 @@ class DateFixtures extends Fixture
             $manager->persist($event);
         }
 
-        $chat = new Chat();
+        $chat = new Chat($event);
         $manager->persist($chat);
 
         $comment1 = new Comment('Komar komentuje', 'Komar', $chat);

@@ -39,6 +39,6 @@ create:
     methods: [POST, OPTIONS]
 
 comment_create:
-    path: /comment
+    path: /chat/{chatId}/comment
     defaults: {_controller: AppBundle:Comment:create}
     methods: [POST, OPTIONS]

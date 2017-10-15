@@ -34,8 +34,7 @@ class ApiController extends BaseController
         $day = $date->format('d');
         $repo = $this->getDoctrine()->getRepository(HistoricalEvent::class);
         $result = $result = $repo->findByDate($day, $month);
-        $view = $this->view($result, 200);
-        return $this->handleView($view);
+        return $result;
     }
 
     public function getTodayRandomAction()

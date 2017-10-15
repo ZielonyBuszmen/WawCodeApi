@@ -25,8 +25,16 @@ class Chat
      */
     private $comments;
 
-    public function __construct()
+    /**
+     * One Event has One Chat.
+     * @ORM\OneToOne(targetEntity="HistoricalEvent", mappedBy="chat")
+     * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
+     */
+    private $event;
+
+    public function __construct(HistoricalEvent $event)
     {
+        $this->event = $event;
         $this->comments = new ArrayCollection();
     }
 

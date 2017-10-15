@@ -8,11 +8,11 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class CommentController extends BaseController
 {
-    public function createAction()
+    public function createAction(int $chatId)
     {
         $em = $this->getEntityManager();
         $chatRepository = $em->getRepository(Chat::class);
-        $chat = $chatRepository->findOneBy([]);
+        $chat = $chatRepository->find($chatId);
         $comment = new Comment('Test', 'Test', $chat);
         $em->persist($comment);
         $em->flush();

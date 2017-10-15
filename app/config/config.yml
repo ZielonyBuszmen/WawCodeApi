@@ -18,7 +18,7 @@ framework:
     form: ~
     csrf_protection: ~
     validation: { enable_annotations: true }
-    serializer: { enable_annotations: true }
+#    serializer: { enable_annotations: true }
     templating:
         engines: ['twig']
     default_locale: '%locale%'
@@ -69,7 +69,20 @@ swiftmailer:
     spool: { type: memory }
 
 
+# JmsSerializer Configuration
+jms_serializer:
+    metadata:
+        cache: file
+        file_cache:
+            dir: "%kernel.cache_dir%/serializer"
+        auto_detection: true
+        directories:
+            AppBundle:
+                namespace_prefix: "AppBundle"
+                path: "@AppBundle/Serializer/config"
 
+
+# Fos Api Configuration
 fos_rest:
     serializer:
         serialize_null: true
@@ -78,3 +91,23 @@ fos_rest:
     format_listener:
           rules:
               - { path: '^/', priorities: ['json'], fallback_format: json, prefer_extension: true }
+
+    view:
+        view_response_listener: force
+        formats:
+            json: true
+            xml:  true
+        mime_types:
+            json: ['application/json', 'application/x-json']
+            png:  ['image/png']
+            jpg:  ['image/jpeg']
+    versioning:
+        enabled: true
+        resolvers:
+            media_type:
+                enabled: true
+
+    allowed_methods_listener: true
+    access_denied_listener:
+        json: true
+    body_listener: true
