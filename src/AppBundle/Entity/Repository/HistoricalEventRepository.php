@@ -54,7 +54,6 @@ class HistoricalEventRepository extends EntityRepository
             'day' => $data->day,
             'month' => $data->month,
             'year' => $data->year,
-            'name' => $data->name,
         ]);
     }
 

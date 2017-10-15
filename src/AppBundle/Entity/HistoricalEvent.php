@@ -34,17 +34,17 @@ class HistoricalEvent
     private $year;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=1024)
      */
     private $name;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=true, length=1024)
      */
     private $content;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=true, length=1024)
      */
     private $imageUrl;
 

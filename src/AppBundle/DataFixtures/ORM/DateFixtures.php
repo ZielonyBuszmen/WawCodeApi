@@ -12,41 +12,68 @@ class DateFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        $names=['Bitwa o świerzaki', 'Wybudowanie monopolowego', 'Tramwaje jeżdżom'];
-        $content = 'Lorem ipsum trlelele kolejny wyraz szesc siedem osiem';
-        for ($i = 0; $i < 3; $i++) {
-            $event = new HistoricalEvent();
-            $event->setDay(15);
-            $event->setMonth(10);
-            $event->setYear(mt_rand(1000, 2000));
-            $event->setName($names[$i]);
-            $event->setContent($names[$i]." ".$content);
-            $manager->persist($event);
-        }
+        $today = new \DateTime("now");
+        $day= $today->format('d');
 
-        $names=['Pawlacze i kołacze', 'Ruskie uciekli', 'Tramwaje jeżdżom'];
-        $content = 'Lorem ipsum trlelele kolejny wyraz szesc siedem osiem';
-        for ($i = 0; $i < 2; $i++) {
-            $event = new HistoricalEvent();
-            $event->setDay(14);
-            $event->setMonth(10);
-            $event->setYear(mt_rand(1000, 2000));
-            $event->setName($names[$i]);
-            $event->setContent($names[$i]." ".$content);
-            $manager->persist($event);
-        }
+        $event = new HistoricalEvent();
+        $event->setDay(15);
+        $event->setMonth(10);
+        $event->setYear(1861);
+        $event->setContent("W Warszawie wojsko rosyjskie rozbiło demonstrację patriotyczną z okazji rocznicy śmierci Tadeusza Kościuszki.");
+        $event->setName("Wojskowa demonstracja");
+        $event->setImageUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Tadeusz_Ko%C5%9Bciuszko.PNG/270px-Tadeusz_Ko%C5%9Bciuszko.PNG");
+        $manager->persist($event);
 
-        $names=['Niemieca bili baby', 'Pierwsze światowe wdychanie spalin', 'Tramwaje jeżdżom'];
-        $content = 'Lorem ipsum trlelele kolejny wyraz szesc siedem osiem';
-        for ($i = 0; $i < 2; $i++) {
-            $event = new HistoricalEvent();
-            $event->setDay(16);
-            $event->setMonth(10);
-            $event->setYear(mt_rand(1000, 2017));
-            $event->setName($names[$i]);
-            $event->setContent($names[$i]." ".$content);
-            $manager->persist($event);
-        }
+
+        $event = new HistoricalEvent();
+        $event->setDay(15);
+        $event->setMonth(10);
+        $event->setYear(1944);
+        $event->setContent("Ukazało się pierwsze wydanie 'Życia Warszawy'");
+        $event->setName("Magazyn 'Życie Warszawy'");
+        $event->setImageUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Dodatek_nadzwyczajny_%C5%BBycia_Warszawy_wyzwolnie_Warszawy_17_stycznia_1945.jpg/800px-Dodatek_nadzwyczajny_%C5%BBycia_Warszawy_wyzwolnie_Warszawy_17_stycznia_1945.jpg");
+        $manager->persist($event);
+
+
+        $event = new HistoricalEvent();
+        $event->setDay(15);
+        $event->setMonth(10);
+        $event->setYear(2006);
+        $event->setContent("Odbył się ostatni seans filmowy w warszawskim kinie „Relax”'");
+        $event->setName("Kino Relax");
+        $event->setImageUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Kino_relax_warszawa_neon.JPG/800px-Kino_relax_warszawa_neon.JPG");
+        $manager->persist($event);
+
+
+        $event = new HistoricalEvent();
+        $event->setDay(15);
+        $event->setMonth(10);
+        $event->setYear(1933);
+        $event->setContent("Reprezentacja Polski przegrała z Czechosłowacją 1:2 w rozegranym w Warszawie meczu eliminacyjnym do II Mistrzostw Świata w Piłce Nożnej we Włoszech.");
+        $event->setName("Reprezentacja Polski przegrała z Czechosłowacją 1:2");
+        $event->setImageUrl("https://i.pinimg.com/originals/b3/df/76/b3df767cd60b9137d60e99f336b80b44.jpg");
+        $manager->persist($event);
+
+
+        $event = new HistoricalEvent();
+        $event->setDay(16);
+        $event->setMonth(10);
+        $event->setYear(1940);
+        $event->setContent("Oficjalnie utworzono warszawskie getto.");
+        $event->setName("Warszawskie getto");
+        $event->setImageUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Jewish_man_humiliated_by_German_soldiers_%28Warsaw%2C_1939%29.jpg/800px-Jewish_man_humiliated_by_German_soldiers_%28Warsaw%2C_1939%29.jpg");
+        $manager->persist($event);
+
+
+        $event = new HistoricalEvent();
+        $event->setDay(16);
+        $event->setMonth(10);
+        $event->setYear(1940);
+        $event->setContent("W pierwszych pięciu publicznych egzekucjach w okupowanej Warszawie powieszono 50 więźniów Pawiaka.");
+        $event->setName("Okupowana Warszawa");
+        $event->setImageUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Wi%C4%99zienie_Pawiak_przed_1939.jpg/1280px-Wi%C4%99zienie_Pawiak_przed_1939.jpg");
+        $manager->persist($event);
+
 
         $chat = new Chat($event);
         $manager->persist($chat);
