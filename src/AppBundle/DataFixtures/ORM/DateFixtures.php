@@ -22,7 +22,9 @@ class DateFixtures extends Fixture
         $event->setContent("W Warszawie wojsko rosyjskie rozbiło demonstrację patriotyczną z okazji rocznicy śmierci Tadeusza Kościuszki.");
         $event->setName("Wojskowa demonstracja");
         $event->setImageUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Tadeusz_Ko%C5%9Bciuszko.PNG/270px-Tadeusz_Ko%C5%9Bciuszko.PNG");
+        $chat  = new Chat($event);
         $manager->persist($event);
+        $manager->persist($chat);
 
 
         $event = new HistoricalEvent();
@@ -32,8 +34,9 @@ class DateFixtures extends Fixture
         $event->setContent("Ukazało się pierwsze wydanie 'Życia Warszawy'");
         $event->setName("Magazyn 'Życie Warszawy'");
         $event->setImageUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Dodatek_nadzwyczajny_%C5%BBycia_Warszawy_wyzwolnie_Warszawy_17_stycznia_1945.jpg/800px-Dodatek_nadzwyczajny_%C5%BBycia_Warszawy_wyzwolnie_Warszawy_17_stycznia_1945.jpg");
+        $chat  = new Chat($event);
         $manager->persist($event);
-
+        $manager->persist($chat);
 
         $event = new HistoricalEvent();
         $event->setDay(15);
@@ -42,7 +45,9 @@ class DateFixtures extends Fixture
         $event->setContent("Odbył się ostatni seans filmowy w warszawskim kinie „Relax”'");
         $event->setName("Kino Relax");
         $event->setImageUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Kino_relax_warszawa_neon.JPG/800px-Kino_relax_warszawa_neon.JPG");
+        $chat  = new Chat($event);
         $manager->persist($event);
+        $manager->persist($chat);
 
 
         $event = new HistoricalEvent();
@@ -52,7 +57,9 @@ class DateFixtures extends Fixture
         $event->setContent("Reprezentacja Polski przegrała z Czechosłowacją 1:2 w rozegranym w Warszawie meczu eliminacyjnym do II Mistrzostw Świata w Piłce Nożnej we Włoszech.");
         $event->setName("Reprezentacja Polski przegrała z Czechosłowacją 1:2");
         $event->setImageUrl("https://i.pinimg.com/originals/b3/df/76/b3df767cd60b9137d60e99f336b80b44.jpg");
+        $chat  = new Chat($event);
         $manager->persist($event);
+        $manager->persist($chat);
 
 
         $event = new HistoricalEvent();
@@ -62,7 +69,9 @@ class DateFixtures extends Fixture
         $event->setContent("Oficjalnie utworzono warszawskie getto.");
         $event->setName("Warszawskie getto");
         $event->setImageUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Jewish_man_humiliated_by_German_soldiers_%28Warsaw%2C_1939%29.jpg/800px-Jewish_man_humiliated_by_German_soldiers_%28Warsaw%2C_1939%29.jpg");
+        $chat  = new Chat($event);
         $manager->persist($event);
+        $manager->persist($chat);
 
 
         $event = new HistoricalEvent();
@@ -73,21 +82,10 @@ class DateFixtures extends Fixture
         $event->setName("Okupowana Warszawa");
         $event->setImageUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Wi%C4%99zienie_Pawiak_przed_1939.jpg/1280px-Wi%C4%99zienie_Pawiak_przed_1939.jpg");
         $manager->persist($event);
-
-
         $chat = new Chat($event);
         $manager->persist($chat);
 
-        $comment1 = new Comment('Komar komentuje', 'Komar', $chat);
-        $manager->persist($comment1);
-        $comment2 = new Comment('Maciek komentuje', 'Maćku', $chat);
-        $manager->persist($comment2);
-        $comment3 = new Comment('Ilya komentuje', 'Ilya', $chat);
-        $manager->persist($comment3);
-        $comment4 = new Comment('Piotrku komentuje', 'Piotrku', $chat);
-        $manager->persist($comment4);
-        $comment5 = new Comment('Pandu komentuje', 'Pandu', $chat);
-        $manager->persist($comment5);
+
 
         $manager->flush();
     }
